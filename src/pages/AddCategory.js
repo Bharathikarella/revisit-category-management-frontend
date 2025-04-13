@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import '../styles/AddCategory.css';
 
@@ -26,7 +26,7 @@ const AddCategory = () => {
     formData.append('imageUrl', imageUrl);
   
     try {
-      await axios.post('https://revisit-category-management-backend-xcpj.onrender.com/api/categories', formData, {
+      await API.post('/api/categories', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

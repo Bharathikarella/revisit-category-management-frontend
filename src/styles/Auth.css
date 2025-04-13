@@ -32,3 +32,18 @@
 .auth-form button:hover {
   background-color: #0056b3;
 }
+.auth-footer {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.auth-link {
+  margin-left: 5px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}

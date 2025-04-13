@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
 import '../styles/Auth.css';
+import API from '../services/api';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -11,8 +12,8 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://revisit-category-management-backend-xcpj.onrender.com/api/auth/signup', { email, password });
-      navigate('/login');
+      await API.post('/api/auth/signup', { email, password });
+      navigate('/');
     } catch (err) {
       alert('Signup failed');
     }

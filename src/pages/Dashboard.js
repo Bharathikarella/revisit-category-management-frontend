@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API from '../services/api';
 import { Link } from 'react-router-dom';
 import '../styles/Dashboard.css';
 axios.get('/api/categories')
@@ -10,7 +11,7 @@ const Dashboard = () => {
   const fetchCategories = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('https://revisit-category-management-backend-xcpj.onrender.com/api/categories', {
+      const res = await API.get('/api/categories', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCategories(res.data);

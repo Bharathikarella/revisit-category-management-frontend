@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/EditCategory.css';
+import API from '../services/api';
 
 const EditCategory = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const EditCategory = () => {
     const fetchCategory = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get(`https://revisit-category-management-backend-xcpj.onrender.com/api/categories`, {
+        const res = await API.get(`/api/categories${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const found = res.data.find(cat => cat._id === id);
@@ -37,7 +38,7 @@ const EditCategory = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        `https://revisit-category-management-backend-xcpj.onrender.com/api/categories/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/categories/${id}`,
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
